@@ -4,32 +4,32 @@ pipeline {
     stages {
         stage('Barcelona') {
             steps {
-                sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Barcelona'
+                bat 'javac ProgramaCiudades.java'
+                bat 'java ProgramaCiudades Barcelona'
             }
         }
         stage('Cordoba') {
             steps {
-                sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Cordoba'
+                bat 'javac ProgramaCiudades.java'
+                bat 'java ProgramaCiudades Cordoba'
             }
         }
         stage('Madrid') {
             steps {
-                sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Madrid'
+                bat 'javac ProgramaCiudades.java'
+                bat 'java ProgramaCiudades Madrid'
             }
         }
         stage('Malaga') {
             steps {
-                sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Malaga'
+                bat 'javac ProgramaCiudades.java'
+                bat 'java ProgramaCiudades Malaga'
             }
         }
         stage('Sevilla') {
             steps {
-                sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Sevilla'
+                bat 'javac ProgramaCiudades.java'
+                bat 'java ProgramaCiudades Sevilla'
             }
         }
     }
