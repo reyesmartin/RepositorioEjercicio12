@@ -1,86 +1,59 @@
-interface Ciudad {
-	void calcularPoblacionFinal();
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
 
-	public static void main(String[] args) {
-		// cuerpo del método
-	}
-}
-
-// CLASES QUE IMPLEMENTAN CIUDAD
-
-class Barcelona implements Ciudad {
-	private int poblacionParcial = 1620000;
-	private double poblacionFinal;
-
-	public void calcularPoblacionFinal() {
-		poblacionFinal = poblacionParcial * 0.80;
-		System.out.println("La poblacion final de Barcelona es: " + poblacionFinal);
-	}
-
-	
-
-}
-
-class Cordoba implements Ciudad {
-	private int poblacionParcial = 325708;
-	private double poblacionFinal;
-
-	public void calcularPoblacionFinal() {
-		poblacionFinal = poblacionParcial * 0.80;
-		System.out.println("La poblacion final de Cordoba es: " + poblacionFinal);
-	}
-	
-	
-}
-
-class Madrid implements Ciudad {
-	private int poblacionParcial = 3223000;
-	private double poblacionFinal;
-
-	public void calcularPoblacionFinal() {
-		poblacionFinal = poblacionParcial * 0.80;
-		System.out.println("La poblacion final de Madrid es: " + poblacionFinal);
-	}
-	
-	
-}
-
-class Malaga implements Ciudad {
-	private int poblacionParcial = 571026;
-	private double poblacionFinal;
-
-	public void calcularPoblacionFinal() {
-		poblacionFinal = poblacionParcial * 0.80;
-		System.out.println("La poblacion final de Malaga es: " + poblacionFinal);
-	}
-	
-	
-}
-
-class Sevilla implements Ciudad {
-	private int poblacionParcial = 688711;
-	private double poblacionFinal;
-
-	public void calcularPoblacionFinal() {
-		poblacionFinal = poblacionParcial * 0.80;
-		System.out.println("La poblacion final de Sevilla es: " + poblacionFinal);
-	}
-	
-
-}
-
-// CLASE MAIN
 public class ProgramaCiudades {
-	public static void main(String[] args) {
-		Ciudad[] ciudades = new Ciudad[5];
-		ciudades[0] = new Barcelona();
-		ciudades[1] = new Cordoba();
-		ciudades[2] = new Madrid();
-		ciudades[3] = new Malaga();
-		ciudades[4] = new Sevilla();
 
-		for (Ciudad ciudad : ciudades) {
-			ciudad.calcularPoblacionFinal();
+	public static void main(String[] args) {
+		
+		Ciudad barcelona = new Ciudad("Barcelona", 1620000);
+		Ciudad cordoba = new Ciudad("Cordoba", 325708);
+		Ciudad madrid = new Ciudad("Madrid", 3223000);
+		Ciudad malaga = new Ciudad("Malaga", 571026);
+		Ciudad sevilla = new Ciudad("Sevilla", 688711);
+		List<Ciudad> ciudades = Arrays.asList(barcelona, cordoba, madrid, malaga, sevilla);
+		
+		String proyecto = "Poblacion Ciudades";
+		int buildNumero = 1;
+		String contenidoJenkinsFile = 
+				"pipeline {\n" +
+                        "    agent any\n" +
+                        "    stages {\n" +
+                        "        stage('Build') {\n" +
+                        "            steps {\n" +
+                        "                script {\n" +
+                        "                    echo 'Building " + proyecto + " (Build #" + buildNumero + ")'\n" +
+                        "                }\n" +
+                        "            }\n" +
+                        "        }\n";
+		
+		
+		for(Ciudad c: ciudades) {
+			contenidoJenkinsFile +="        stage('"+c.getNombre()+"') {\n" +
+                    				"            steps {\n" +
+				                    "                script {\n" +
+				                    "                    echo 'Poblacion final de "+c.getNombre()+" es: "+c.calculaPoblacionFinal()+"'\n" +
+				                    "                }\n" +
+				                    "            }\n" +
+				                    "        }\n";
+		}
+
+		
+		contenidoJenkinsFile += "}\n" +
+                        "}";
+										  	
+
+		try (
+			PrintWriter writer = new PrintWriter(new FileWriter("Jenkinsfile")))
+		{
+			writer.write(contenidoJenkinsFile);
+			System.out.println("Se genero el archivo correctamente");
+		} 
+		
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
