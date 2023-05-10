@@ -8,10 +8,10 @@ pipeline {
                 sh 'java ProgramaCiudades Barcelona'
             }
         }
-        stage('Córdoba') {
+        stage('Cordoba') {
             steps {
                 sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Córdoba'
+                sh 'java ProgramaCiudades Cordoba'
             }
         }
         stage('Madrid') {
@@ -20,10 +20,10 @@ pipeline {
                 sh 'java ProgramaCiudades Madrid'
             }
         }
-        stage('Málaga') {
+        stage('Malaga') {
             steps {
                 sh 'javac ProgramaCiudades.java'
-                sh 'java ProgramaCiudades Málaga'
+                sh 'java ProgramaCiudades Malaga'
             }
         }
         stage('Sevilla') {
