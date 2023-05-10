@@ -17,10 +17,7 @@ class Barcelona implements Ciudad {
 		System.out.println("La poblacion final de Barcelona es: " + poblacionFinal);
 	}
 
-	public static void main(String[] args) {
-		Barcelona barcelona = new Barcelona();
-		barcelona.calcularPoblacionFinal();
-	}
+	
 
 }
 
@@ -33,10 +30,7 @@ class Cordoba implements Ciudad {
 		System.out.println("La poblacion final de Cordoba es: " + poblacionFinal);
 	}
 	
-	public static void main(String[] args) {
-		Cordoba cordoba = new Cordoba();
-		cordoba.calcularPoblacionFinal();
-	}
+	
 }
 
 class Madrid implements Ciudad {
@@ -48,10 +42,7 @@ class Madrid implements Ciudad {
 		System.out.println("La poblacion final de Madrid es: " + poblacionFinal);
 	}
 	
-	public static void main(String[] args) {
-		Madrid madrid = new Madrid();
-		madrid.calcularPoblacionFinal();
-	}
+	
 }
 
 class Malaga implements Ciudad {
@@ -63,10 +54,7 @@ class Malaga implements Ciudad {
 		System.out.println("La poblacion final de Malaga es: " + poblacionFinal);
 	}
 	
-	public static void main(String[] args) {
-		Malaga malaga = new Malaga();
-		malaga.calcularPoblacionFinal();
-	}
+	
 }
 
 class Sevilla implements Ciudad {
@@ -78,10 +66,7 @@ class Sevilla implements Ciudad {
 		System.out.println("La poblacion final de Sevilla es: " + poblacionFinal);
 	}
 	
-	public static void main(String[] args) {
-		Sevilla sevilla = new Sevilla();
-		sevilla.calcularPoblacionFinal();
-	}
+
 }
 
 // CLASE MAIN
